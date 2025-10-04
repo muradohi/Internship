@@ -1,0 +1,54 @@
+# Approach to use: "h2o" or "sklearn"
+approach: "h2o" # Change to "sklearn" for scikit-learn approach
+datagen: "smote"
+
+dataset:
+  csv_path: "/Users/murad/Desktop/Masters_Internship_Project/dataset/cirrhosis.csv"  # Path to the dataset
+  balanced_csv_path: "/Users/murad/Desktop/Masters_Internship_Project/dataset/balanced_cirrhosis.csv"
+  target_column: "Stage"  # Target column for prediction
+  k_features: 20  # Number of top features to select
+  test_size: 0.2   # Fraction of the dataset to use for testing
+  fixcol: 'ID'
+
+randomness:
+  seed: 1234  # Random seed for reproducibility
+  random_state: 42  # Random state for splitting the dataset
+
+automl:
+  max_runtime_secs: 600  # Maximum runtime for H2O AutoML in seconds
+  nfolds: 3  # Number of folds for cross-validation
+  max_models: 5  # Maximum number of models to train
+  include_algos: ["XRF", "DRF", "GBM", "GLM"]  # Algorithms to include for H2O AutoML
+
+sklearn:
+  models:
+    RandomForestClassifier:  # Parameters for RandomForestClassifier
+      param_grid:
+        n_estimators: [50, 100]
+        # max_depth: [None, 10, 15]
+        # min_samples_split: [5, 10]
+        # min_samples_leaf: [2, 5]
+        # bootstrap: [True, False]
+        # max_features: ['sqrt', 'log2']
+    XRF:  # Parameters for Extreme Random Forest (XRF)
+      param_grid:
+        n_estimators: [50, 100]
+        # max_depth: [10,20]
+        # min_samples_split: [5,10]
+        # min_samples_leaf: [2, 5]
+    XGBClassifier:  # Parameters for XGBoost Classifier
+      param_grid:
+        n_estimators: [50, 100]
+        # max_depth: [3, 5]
+        # learning_rate: [0.01, 0.1]
+        # subsample: [0.8, 1.0]
+        # colsample_bytree: [0.8, 1.0]
+  scoring: "accuracy"  # Metric to optimize during hyperparameter tuning
+  cv: 3  # Number of cross-validation folds
+
+
+output:
+  save_path: "/Users/murad/Desktop/Masters_Internship_Project/"  # Base path to save outputs
+  folder_name: "exai_fig"  # Folder name for storing plots and outputs
+
+ratios: [0.8]  # Ratios for splitting the dataset (H2O-specific)
