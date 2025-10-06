@@ -1,11 +1,11 @@
 # Approach to use: "h2o" or "sklearn"
 approach: "h2o" # Change to "sklearn" for scikit-learn approach
-datagen: "smote"
+datagen: ""
 
 dataset:
-  csv_path: "/Users/murad/Desktop/Masters_Internship_Project/dataset/cirrhosis.csv"  # Path to the dataset
-  balanced_csv_path: "/Users/murad/Desktop/Masters_Internship_Project/dataset/balanced_cirrhosis.csv"
-  target_column: "Stage"  # Target column for prediction
+  csv_path: ""  # Path to the dataset
+  balanced_csv_path: ""
+  target_column: ""  # Target column for prediction
   k_features: 20  # Number of top features to select
   test_size: 0.2   # Fraction of the dataset to use for testing
   fixcol: 'ID'
@@ -48,7 +48,7 @@ sklearn:
 
 
 output:
-  save_path: "/Users/murad/Desktop/Masters_Internship_Project/"  # Base path to save outputs
+  save_path: ""  # Base path to save outputs
   folder_name: "exai_fig"  # Folder name for storing plots and outputs
 
 ratios: [0.8]  # Ratios for splitting the dataset (H2O-specific)
