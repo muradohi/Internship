@@ -38,7 +38,7 @@ model_name = 'meta-llama/Llama-3.2-11B-Vision-Instruct'
 llm_client = InferenceClient(
 
     model=model_name,
-    token = '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',
+    token = '',
     timeout=120,
 
 )
